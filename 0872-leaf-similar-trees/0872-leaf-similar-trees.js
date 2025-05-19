@@ -7,12 +7,15 @@
  * }
  */
 const findLeaves = (root, array = []) => {
-    // Must be leaf node
-    if (!root.left && !root.right) {
-        array.push(root.val);
-    } else {
+    if (root.left && root.right) {
         findLeaves(root.left, array);
         findLeaves(root.right, array);
+    } else if (root.left) {
+        findLeaves(root.left, array);
+    } else if (root.right) {
+        findLeaves(root.right, array);
+    } else {
+        array.push(root.val);
     }
     return array;
 }
