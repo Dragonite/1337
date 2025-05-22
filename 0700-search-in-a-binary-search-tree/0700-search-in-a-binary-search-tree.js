@@ -12,15 +12,19 @@
  * @return {TreeNode}
  */
 var searchBST = function(root, val) {
-    const dfs = node => {
+    const dfsBST = node => {
         if (!node) {
             return null;
         };
         if (node.val === val) {
             return node;
         }
-        // Search left and search right.
-        return dfs(node.left) || dfs(node.right);
+        // Depending on size, search left and right.
+        if (val < node.val) {
+            return dfsBST(node.left);
+        } else {
+            return dfsBST(node.right);
+        }
     }
-    return dfs(root);
+    return dfsBST(root);
 };
