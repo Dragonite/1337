@@ -24,7 +24,7 @@ var maxLevelSum = function(root) {
         node.left && queue.enqueue({ node: node.left, level: level + 1 });
         node.right && queue.enqueue({ node: node.right, level: level + 1 });
     }
-    let maxSum = 0;
+    let maxSum = -Infinity;
     let highestIndex = -1;
     for (let i = 0; i < levelSums.length; i++) {
         if (levelSums[i] > maxSum) {
