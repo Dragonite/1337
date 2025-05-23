@@ -9,9 +9,9 @@ export class ListNode {
 }
 
 export abstract class LinkedList {
-    head: ListNode | undefined = undefined;
+    head: ListNode | undefined;
+    tail: ListNode | undefined;
     abstract addNode(value: any): void;
-    abstract removeLast(): ListNode | undefined;
     abstract findLast(): ListNode | undefined;
     length: number = 0;
 
@@ -26,6 +26,10 @@ export abstract class LinkedList {
             this.head = undefined;
             return;
         }
+    }
+
+    removeLast() : ListNode | undefined {
+        return this.removeAtIndex(this.length - 1);   
     }
 
     removeAtIndex(targetIndex: number): ListNode | undefined {

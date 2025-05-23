@@ -3,7 +3,6 @@ import { LinkedList, ListNode } from "./LinkedList";
 // Linked List with no pointers, basically every list item is unknown. Also unknown length.
 // Add node: O(n)
 // find last: O(n)
-// remove last: O(n)
 class PrimitiveLinkedList extends LinkedList {
     addNode(value: any): void {
         if (this.head) {
@@ -26,24 +25,25 @@ class PrimitiveLinkedList extends LinkedList {
         }
         return node;
     }
-
-    removeLast() : ListNode | undefined {
-        return this.removeAtIndex(this.length - 1);   
-    }
 }
 
-const list = new PrimitiveLinkedList();
-list.addNode(1);
-console.log(list.length)
-list.addNode(2);
-list.addNode(3);
-list.addNode(4);
-list.addNode(5);
-const removed = list.removeAtIndex(3);
-console.log(removed)
-list.print();
-const added = list.addAtIndex(4, 3);
-console.log(added);
-list.print();
-list.removeLast();
-list.print();
+// Extra tail pointer on this LinkedList
+// Insertion is now constant time O(1)
+// Finding last is constant time O(1)
+class TailedLinkedList extends LinkedList {
+    addNode(value: any): void {
+        // Create new node and use as reference for both head and tail.
+        const node = new ListNode(value);
+        if (!this.head || !this.tail) {
+            this.head = node;
+            this.tail = node;
+        } else {
+            this.tail.next = node;
+            this.tail = node;
+        }
+    }
+
+    findLast(): ListNode | undefined {
+        return this.tail;
+    }
+}
