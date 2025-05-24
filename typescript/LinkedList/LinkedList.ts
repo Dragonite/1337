@@ -1,10 +1,12 @@
 export class ListNode {
     public value: any;
     public next: ListNode | undefined;
+    public prev: ListNode | undefined;
 
-    constructor(value: any, next: ListNode | undefined = undefined) {
+    constructor(value: any, next: ListNode | undefined = undefined, prev: ListNode | undefined = undefined) {
         this.value = value;
         this.next = next;
+        this.prev = prev;
     }
 }
 
