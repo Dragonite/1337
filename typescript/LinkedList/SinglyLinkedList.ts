@@ -30,7 +30,7 @@ class PrimitiveLinkedList extends LinkedList {
 // Extra tail pointer on this LinkedList
 // Insertion is now constant time O(1)
 // Finding last is constant time O(1)
-class TailedLinkedList extends LinkedList {
+export class TailedLinkedList extends LinkedList {
     addNode(value: any): void {
         // Create new node and use as reference for both head and tail.
         const node = new ListNode(value);
