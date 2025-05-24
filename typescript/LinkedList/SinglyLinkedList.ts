@@ -38,6 +38,8 @@ export class TailedLinkedList extends LinkedList {
             this.head = node;
             this.tail = node;
         } else {
+            // For doubly linked list. We don't actually use this in TailedLinkedList
+            node.prev = this.tail;
             this.tail.next = node;
             this.tail = node;
         }
